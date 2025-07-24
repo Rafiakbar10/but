@@ -16,7 +16,7 @@ telegram_app = Application.builder().token(TOKEN).build()
 def home():
     return "🤖 Bot aktif!"
 
-@app.route("/", methods=["POST"])
+@app.route("/api", methods=["POST"])
 async def webhook():
     update = Update.de_json(request.get_json(force=True), telegram_app.bot)
     await telegram_app.process_update(update)
