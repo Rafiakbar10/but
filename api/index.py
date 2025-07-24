@@ -16,6 +16,7 @@ telegram_app = Application.builder().token(TOKEN).build()
 def home():
     return "🤖 Bot aktif!"
 
+# ✅ Webhook diarahkan ke /api agar sesuai dengan vercel.json
 @app.route("/api", methods=["POST"])
 async def webhook():
     update = Update.de_json(request.get_json(force=True), telegram_app.bot)
@@ -35,7 +36,6 @@ def download_youtube(url):
         print(f"Error YouTube: {e}")
         return None
 
-# Fungsi download dari TikTok
 def download_tiktok(url):
     try:
         api_url = f"https://tikwm.com/api/?url={url}"
